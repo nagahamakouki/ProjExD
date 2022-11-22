@@ -23,6 +23,7 @@ def shutudai(alphabet):
     for c in all_chars:
         if c not in abs_chars:
             print(c,end=" ")
+            
     print()
     return abs_chars
     
