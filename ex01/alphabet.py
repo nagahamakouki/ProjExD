@@ -1,7 +1,7 @@
 import random
 import time
 
-num_of_alphabet = 26
+num_of_alphabet = 26 #アルファベットの数
 num_of_all_chars = 10
 num_of_abs_chars = 2
 num_of_traials = 2
@@ -23,7 +23,7 @@ def shutudai(alphabet):
     for c in all_chars:
         if c not in abs_chars:
             print(c,end=" ")
-            
+
     print()
     return abs_chars
     
