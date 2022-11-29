@@ -10,10 +10,14 @@ entry.grid(row=0, column=0, columnspan=3)
 def button_click(event):
     btn = event.widget
     num = btn["text"]
-    tkm.showinfo("", f"{num}ボタンがクリックされました")
+    if num == "=":
+        pass
+    else:
+        entry.insert(tk.END,num)
+    #tkm.showinfo("", f"{num}ボタンがクリックされました")
 
 r,c=1,0
-for i in range(10):
+for i in range(9,-1,-1):
    button = tk.Button(root, text=f"{i}", width=4, height=2, font=("",30))
    button.grid(row=r, column=c)
    button.bind("<1>", button_click)
