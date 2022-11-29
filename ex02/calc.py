@@ -13,29 +13,29 @@ def button_click(event):
     if num == "=":
         siki = entry.get()
         res = eval(siki)
-        entry.delete(0, tk.END)
-        entry.insert(tk.END, res)
+        entry.delete(0,tk.END)
+        entry.insert(0,tk.END)
     else:
         entry.insert(tk.END,num)
     #tkm.showinfo("", f"{num}ボタンがクリックされました")
 
-r,c=1,0
+r,c=1,2
 for i in range(9,-1,-1):
    button = tk.Button(root, text=f"{i}", width=4, height=2, font=("",30))
    button.grid(row=r, column=c)
    button.bind("<1>", button_click)
-   c += 1
-   if c%3 == 0:
+   c -= 1
+   if c%3 == 2:
     r += 1
-    c = 0
+    c = 2
 
 operators = ["+","="]
 for ope in operators:
     button = tk.Button(root, text=f"{ope}", width=4, height=2, font=("",30))
     button.grid(row=r, column=c)
-    c += 1
-    if c%3 ==0:
+    c -= 1
+    if c%3 == 2:
         r+=1
-        c = 0
+        c = 2
 
 root.mainloop()
