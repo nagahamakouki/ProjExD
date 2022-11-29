@@ -10,8 +10,8 @@ entry.grid(row=0, column=0, columnspan=3)
 def button_click(event):
     btn = event.widget
     num = btn["text"]
+    siki= entry.get()
     if num == "=":
-        siki = entry.get()
         res = eval(siki)
         entry.delete(0,tk.END)
         entry.insert(tk.END,res)
@@ -25,14 +25,12 @@ def button_click(event):
         entry.insert(0,txt) #最後の一文字を抜いた文字式の挿入
 
     elif num == "x^2":
-        siki = entry.get() #文字列の取得
         res = eval(siki) #評価
         ni = res*res #二乗の計算
         entry.delete(0,tk.END) 
         entry.insert(tk.END,ni) #結果の挿入
 
     elif num == "%":
-        siki = entry.get()
         if siki == int: #整数か小数かの判別
             res = int(siki)/100 #パーセント計算
         else:
