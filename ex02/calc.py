@@ -43,8 +43,20 @@ def button_click(event):
     else:
         entry.insert(tk.END,num)
     #tkm.showinfo("", f"{num}ボタンがクリックされました")
+a,b=1,0
+options = ["AC","A"]
+for op in options:
+   button = tk.Button(root, text=f"{op}", width=4, height=1, font=("",30))
+   button.grid(row=a, column=b)
+   button.bind("<1>", button_click)
+   b+=1
+   if b%3 == 0:
+    a += 1
+    b = 0
 
-r,c=1,2
+
+
+r,c=2,2
 for i in range(9,-1,-1):
    button = tk.Button(root, text=f"{i}", width=4, height=1, font=("",30))
    button.grid(row=r, column=c)
@@ -54,7 +66,7 @@ for i in range(9,-1,-1):
     r += 1
     c = 2
 
-operators = ["","=","+","-","/","*","x^2","%","A","AC"]
+operators = ["","=","+","-","/","*","x^2","%"]
 for ope in operators:
     button = tk.Button(root, text=f"{ope}", width=4, height=1, font=("",30))
     button.grid(row=r, column=c)
