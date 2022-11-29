@@ -15,14 +15,26 @@ def button_click(event):
         res = eval(siki)
         entry.delete(0,tk.END)
         entry.insert(tk.END,res)
+
     elif num == "AC":
         entry.delete(0,tk.END) #ACを押すと表示内容の全削除を行う
+
     elif num == "x^2":
-        siki = entry.get()
-        res = eval(siki)
-        ni = res*res
+        siki = entry.get() #文字列の取得
+        res = eval(siki) #評価
+        ni = res*res #二乗の計算
         entry.delete(0,tk.END)
         entry.insert(tk.END,ni)
+
+    elif num == "%":
+        siki = entry.get()
+        if siki == int:
+            res = int(siki)/100
+        else:
+            res = float(siki)/100
+        entry.delete(0,tk.END)
+        entry.insert(tk.END,res)
+
     else:
         entry.insert(tk.END,num)
     #tkm.showinfo("", f"{num}ボタンがクリックされました")
@@ -37,7 +49,7 @@ for i in range(9,-1,-1):
     r += 1
     c = 2
 
-operators = ["","=","+","-","/","*","x^2","AC"]
+operators = ["=","AC","+","-","/","*","x^2","%"]
 for ope in operators:
     button = tk.Button(root, text=f"{ope}", width=4, height=1, font=("",30))
     button.grid(row=r, column=c)
