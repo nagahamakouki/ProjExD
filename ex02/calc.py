@@ -34,7 +34,7 @@ def button_click(event):
     elif num == "%":
         siki = entry.get()
         if siki == int: #整数か小数かの判別
-            res = int(siki)/100 #百分率にする
+            res = int(siki)/100 #パーセント計算
         else:
             res = float(siki)/100
         entry.delete(0,tk.END)
