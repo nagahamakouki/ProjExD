@@ -54,7 +54,7 @@ for i in range(9,-1,-1):
     r += 1
     c = 2
 
-operators = ["=","AC","+","-","/","*","x^2","%","A"]
+operators = ["","=","+","-","/","*","x^2","%","A","AC"]
 for ope in operators:
     button = tk.Button(root, text=f"{ope}", width=4, height=1, font=("",30))
     button.grid(row=r, column=c)
