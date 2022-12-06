@@ -15,10 +15,16 @@ def main_proc():
     if key == "Down": my += 1
     if key == "Left": mx -= 1
     if key == "Right": mx += 1
+    if maze_lst[mx][my] == 1: #壁
+        if key == "Up": my += 1
+        if key == "Down": my -= 1
+        if key == "Left": mx += 1
+        if key == "Right": mx -= 1
     cx, cy = mx*100+50, my*100+50
     canvas.coords("kokaton", cx, cy)
     root.after(100,main_proc)
 
+    
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("まよえるこうかとん")
@@ -33,8 +39,6 @@ if __name__ == "__main__":
     cx, cy = mx*100+50, my*100+50
     canvas.create_image(cx, cy, image=image1, tag="kokaton")
     canvas.pack()
-
-
 
     key = ""
     root.bind("<KeyPress>", key_down)  
