@@ -22,14 +22,17 @@ if __name__ == "__main__":
     root = tk.Tk()
     root.title("まよえるこうかとん")
     canvas = tk.Canvas(root, width=1500, height=800, bg="black")
+    canvas.pack()
+
+    maze_lst = mm.make_maze(15,9)
+    mm.show_maze(canvas, maze_lst)
 
     image1 = tk.PhotoImage(file="fig/7.png")
     cx, cy = 300, 400
     canvas.create_image(cx, cy, image=image1, tag="kokaton")
     canvas.pack()
 
-    maze_lst = mm.make_maze(15,9)
-    
+
 
     key = ""
     root.bind("<KeyPress>", key_down)  
