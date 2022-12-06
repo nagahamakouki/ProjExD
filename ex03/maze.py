@@ -5,7 +5,7 @@ import tkinter.messagebox as tkm
 def key_down(event):
     global key
     key = event.keysym
-    if mx == 13 and my == 7:
+    if mx == 13 and my == 7: #ゴールマスについたとき
         tkm.showwarning("報告","ゴールおめでとう")
 
 def key_up(event):
@@ -27,7 +27,9 @@ def main_proc():
     canvas.coords("kokaton", cx, cy)
     root.after(100,main_proc)
     
+    
 if __name__ == "__main__":
+    global mx, my
     root = tk.Tk()
     root.title("まよえるこうかとん")
     canvas = tk.Canvas(root, width=1500, height=900, bg="black")
@@ -40,6 +42,10 @@ if __name__ == "__main__":
     mx, my = 1, 1
     cx, cy = mx*100+50, my*100+50
     canvas.create_image(cx, cy, image=image1, tag="kokaton")
+    image2 = tk.PhotoImage(file="fig/3.png")
+    if mx == 13 and my == 7:
+        canvas.create_image(1350,750,image=image2,tag="goal")
+        print("a")
     canvas.pack()
 
     key = ""
