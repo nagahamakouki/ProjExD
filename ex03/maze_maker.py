@@ -23,7 +23,8 @@ def show_maze(canvas, maze_lst):
     for x in range(len(maze_lst)):
         for y in range(len(maze_lst[x])):
             canvas.create_rectangle(x*100, y*100, x*100+100, y*100+100, fill=color[maze_lst[x][y]])
-    canvas.create_rectangle(100, 100, 200, 200, fill="yellow")
+    canvas.create_rectangle(100, 100, 200, 200, fill="yellow") #こうかとんのスタート位置のマスの色変え
+    canvas.create_rectangle(1300, 700, 1400, 800, fill="red") #ゴールマスの色の上書き
 #2次元リストを渡すとCUIで迷路を表示
 def print_maze(maze_lst):
     maze_lst = [list(x) for x in zip(*maze_lst)] #転置
