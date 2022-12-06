@@ -27,7 +27,6 @@ def main_proc():
     canvas.coords("kokaton", cx, cy)
     root.after(100,main_proc)
     
-    
 if __name__ == "__main__":
     global mx, my
     root = tk.Tk()
