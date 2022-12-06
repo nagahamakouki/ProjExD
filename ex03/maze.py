@@ -10,5 +10,6 @@ if __name__ == "__main__":
     cx, cy = 300, 400
     canvas.create_image(cx, cy, image=image1,tag="kokaton")
     canvas.pack()
+    key = ""
     root.mainloop()
 
