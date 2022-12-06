@@ -42,10 +42,9 @@ if __name__ == "__main__":
     mx, my = 1, 1
     cx, cy = mx*100+50, my*100+50
     canvas.create_image(cx, cy, image=image1, tag="kokaton")
-    image2 = tk.PhotoImage(file="fig/3.png")
-    if mx == 13 and my == 7:
-        canvas.create_image(1350,750,image=image2,tag="goal")
-        print("a")
+    #image2 = tk.PhotoImage(file="fig/3.png")
+    #if mx == 13 and my == 7:
+    #    canvas.create_image(1350,750,image=image2,tag="goal")
     canvas.pack()
 
     key = ""
