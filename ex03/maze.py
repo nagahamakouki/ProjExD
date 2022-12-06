@@ -1,9 +1,12 @@
 import tkinter as tk
 import maze_maker as mm
- 
+import tkinter.messagebox as tkm
+
 def key_down(event):
     global key
     key = event.keysym
+    if mx == 13 and my == 7:
+        tkm.showwarning("報告","ゴールおめでとう")
 
 def key_up(event):
     global key
@@ -23,12 +26,11 @@ def main_proc():
     cx, cy = mx*100+50, my*100+50
     canvas.coords("kokaton", cx, cy)
     root.after(100,main_proc)
-
     
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("まよえるこうかとん")
-    canvas = tk.Canvas(root, width=1500, height=800, bg="black")
+    canvas = tk.Canvas(root, width=1500, height=900, bg="black")
     canvas.pack()
 
     maze_lst = mm.make_maze(15,9)
@@ -42,7 +44,7 @@ if __name__ == "__main__":
 
     key = ""
     root.bind("<KeyPress>", key_down)  
-    root.bind("<KeyRelease>", key_up) 
+    root.bind("<KeyRelease>", key_up)
     main_proc()
     root.mainloop()
 
