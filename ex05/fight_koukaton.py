@@ -1,6 +1,9 @@
 import pygame as pg
 import random
 import sys
+import os
+
+main_dir = os.path.split(os.path.abspath(__file__))[0]
 
 class Screen:
     def __init__(self, title, wh, img_path):
@@ -13,6 +16,16 @@ class Screen:
 
     def blit(self):
         self.sfc.blit(self.bgi_sfc, self.bgi_rct)
+
+
+def load_image(file):
+    """loads an image, prepares it for play"""
+    file = os.path.join(main_dir, "data", file)
+    try:
+        surface = pg.image.load(file)
+    except pg.error:
+        raise SystemExit('Could not load image "%s" %s' % (file, pg.get_error()))
+    return surface.convert()
 
 
 class Bird:
@@ -43,6 +56,20 @@ class Bird:
                 self.rct.centerx -= delta[0]
                 self.rct.centery -= delta[1]
         self.blit(scr)
+
+
+class Explosion(pg.sprite.Sprite):
+    """An explosion. Hopefully the Alien and not the player!"""
+
+    defaultlife = 12
+    animcycle = 3
+    images = []
+
+    def __init__(self, actor):
+        pg.sprite.Sprite.__init__(self, self.containers)
+        self.image = self.images[0]
+        self.rect = self.image.get_rect(center=actor.rect.center)
+        self.life = self.defaultlife
 
 
 class Bomb:
@@ -91,14 +118,22 @@ def main():
 
     # 練習５
     bkd_list = []
-    bkd_color_list =[(255, 0, 0), (0, 255, 0,), (0, 0, 255), (0, 0, 1), (255, 255, 255)]
+    bkd_color_list = [(255, 0, 0), (0, 255, 0,), (0, 0, 255), 
+                      (0, 0, 1), (255, 255, 255)]
     for i in range(5):
         sum = random.randint(0,4)
         bkd = Bomb(bkd_color_list[sum], 10, (+1, +1), scr)
         bkd_list.append(bkd)
-        print(bkd_color_list[sum])
     # bkd.update(scr)
     # 練習２
+    img = load_image("explosion1.gif")
+    Explosion.images = [img, pg.transform.flip(img, 1, 1)]
+    bombs = pg.sprite.Group()
+    birds = pg.sprite.Group()
+    Bird.containers = birds, all
+    Bomb.containers = bombs, all
+    Explosion.containers = all
+
     while True:
         scr.blit() 
 
@@ -110,16 +145,19 @@ def main():
         for i in range(5):
             bkd_list[i].update(scr)
             if kkt.rct.colliderect(bkd_list[i].rct):
-
+                pg.time.wait(500)
                 return
+            #for j in range(5):
+            #   if i is j:
+            #       None
+            #   else:
+            #       if bkd_list[i].rct.colliderect(bkd_list[j].rct):
 
+        for bomb in pg.sprite.spritecollide(birds, bombs, 1):
+            Explosion(birds)
+            Explosion(bomb)
         pg.display.update()
         clock.tick(1000)
-        
-        #time = pg.time.get_ticks()
-        #if time % 1000 == 0:
-         #   vx = vx*2
-          #  vy = vy*2
 
 
 if __name__ == "__main__":
