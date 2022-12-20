@@ -20,8 +20,8 @@ class Bird:
     key_delta = {
         pg.K_UP:     [0, -1],
         pg.K_DOWN:   [0, +1],
-        pg.K_RIGHT:  [-1, 0],
-        pg.K_LEFT:   [+1, 0]
+        pg.K_RIGHT:  [+1, 0],
+        pg.K_LEFT:   [-1, 0]
     }
 
     def __init__(self, img_path, ratio, xy):
@@ -89,8 +89,11 @@ def main():
     kkt.update(scr)
 
     # 練習５
-    bkd = Bomb((255, 0, 0), 10, (+1, +1), scr)
-    bkd.update(scr)
+    bkd_list = []
+    for _ in range(5):
+        bkd = Bomb((255, 0, 0), 10, (+1, +1), scr)
+        bkd_list.append(bkd)
+    # bkd.update(scr)
     # 練習２
     while True:
         scr.blit() 
