@@ -70,11 +70,12 @@ def check_bound(obj_rct, scr_rct):
     # 第1引数：こうかとんrectまたは爆弾rect
     # 第2引数：スクリーンrect
     # 範囲内：+1／範囲外：-1
+    
     yoko, tate = +1, +1
     if obj_rct.left < scr_rct.left or scr_rct.right < obj_rct.right:
-        yoko = -1
+        yoko = -1.3
     if obj_rct.top < scr_rct.top or scr_rct.bottom < obj_rct.bottom:
-        tate = -1
+        tate = -1.3
     return yoko, tate
 
 
@@ -109,10 +110,16 @@ def main():
         for i in range(5):
             bkd_list[i].update(scr)
             if kkt.rct.colliderect(bkd_list[i].rct):
+
                 return
 
         pg.display.update()
         clock.tick(1000)
+        
+        #time = pg.time.get_ticks()
+        #if time % 1000 == 0:
+         #   vx = vx*2
+          #  vy = vy*2
 
 
 if __name__ == "__main__":
