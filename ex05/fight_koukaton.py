@@ -59,7 +59,6 @@ class Bird:
 
 
 class Explosion(pg.sprite.Sprite):
-    """An explosion. Hopefully the Alien and not the player!"""
 
     defaultlife = 12
     animcycle = 3
@@ -122,7 +121,7 @@ def main():
                       (0, 0, 1), (255, 255, 255)]
     for i in range(5):
         sum = random.randint(0,4)
-        bkd = Bomb(bkd_color_list[sum], 10, (+1, +1), scr)
+        bkd = Bomb(bkd_color_list[sum], i*10, (+1, +1), scr)
         bkd_list.append(bkd)
     # bkd.update(scr)
     # 練習２
@@ -153,9 +152,9 @@ def main():
             #   else:
             #       if bkd_list[i].rct.colliderect(bkd_list[j].rct):
 
-        for bomb in pg.sprite.spritecollide(birds, bombs, 1):
-            Explosion(birds)
-            Explosion(bomb)
+        # for bomb in pg.sprite.spritecollide(birds, bombs, 1):
+        #     Explosion(birds)
+        #     Explosion(bomb)
         pg.display.update()
         clock.tick(1000)
 
