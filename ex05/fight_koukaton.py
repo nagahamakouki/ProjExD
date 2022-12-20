@@ -123,7 +123,6 @@ def main():
         sum = random.randint(0,4)
         bkd = Bomb(bkd_color_list[sum], i*10, (+1, +1), scr)
         bkd_list.append(bkd)
-    # bkd.update(scr)
     # 練習２
     img = load_image("explosion1.gif")
     Explosion.images = [img, pg.transform.flip(img, 1, 1)]
