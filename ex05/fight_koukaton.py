@@ -58,7 +58,7 @@ class Bird:
         self.blit(scr)
 
 
-class Explosion(pg.sprite.Sprite):
+class Explosion(pg.sprite.Sprite): #対応する画像の爆破
 
     defaultlife = 12
     animcycle = 3
