@@ -145,7 +145,9 @@ def main():
         bkd = Bomb(color_lst[i%5], 10, (random.choice(range(-2, 3)), random.choice(range(-2, 3))), scr)
         bkd_lst.append(bkd)
 
-    knk = BigMushroom("fig/bigkinoko.png", (random.choice(range(-2, 3)), random.choice(range(-2, 3))), (100,100), 0.1)
+    knk = BigMushroom("fig/bigkinoko.png", (random.choice(range(-2, 3)),
+                      random.choice(range(-2, 3))), (100,100), 0.1) #キノコの生成
+
 
 
     # 練習２
@@ -160,20 +162,19 @@ def main():
         for i in range(len(bkd_lst)):
             bkd_lst[i].update(scr)
             if kkt.rct.colliderect(bkd_lst[i].rct):
-                if life == 1:
+                if life == 1: #ライフがある場合
                     life -= 1
-                    bkd_lst[i].rct.centerx = -9999
+                    bkd_lst[i].rct.centerx = -9999 #爆弾を画面外に
                     bkd_lst[i].rct.centery = -9999
-                    kkt = Bird("fig/6.png", 2, kkt.rct.center)
+                    kkt = Bird("fig/6.png", 2, kkt.rct.center) #元の大きさに変更
                 else:
                     return
 
         if kkt.rct.colliderect(knk.rct):
-            life += 1
-            knk.rct.centerx = -9999
+            life += 1 #内部的なライフを増やす
+            knk.rct.centerx = -9999 #衝突時きのこを画面外に
             knk.rct.centery = -9999
-            print(kkt.rct.center)
-            kkt = Bird("fig/6.png", 4, kkt.rct.center)
+            kkt = Bird("fig/6.png", 4, kkt.rct.center) #大きさを変更
         
         else: 
             knk.update(scr)
